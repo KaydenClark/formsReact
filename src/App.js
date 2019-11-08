@@ -1,41 +1,51 @@
 import React from 'react';
-import formdata from './FormData/formdata';
+import FormData from './FormData/formdata';
 import './App.css';
-// import { ReactComponent } from '*.svg';
 
-function App() {
-// class App extends React.Component {
+export default class App extends React.Component {
 
-// render () {
-//   state = {
-//     data: [
-//       {nameFirst: "Kayden", nameLast: "Clark", userName: "KaydenClark725", age: 19, email: "kaydenclark725@gmail.com", password: "passWord123"},
-//       {nameFirst: "Kayden", nameLast: "Clark", userName: "KaydenClark725", age: 19, email: "kaydenclark725@gmail.com", password: "passWord123"},
-//     ]
-//   };
-// this.setState({
-//   data: [model, ...data],
-// })
+  state = {
+    data: [
+    {
+    id: "1",
+    nameFirst: "Kayden", 
+    nameLast: "Clark", 
+    userName: "KaydenClark725", 
+    age: 19, 
+    email: "kaydenclark725@gmail.com", 
+    password: "passWord123"},
+    ]
+  }
+
+  onSubmit = (model) => {
+    model.id = +new Date()
+    alert(JSON.stringify(model));
+    this.setState({
+      data: [model, ...this.state.data]
+    })
+  }
+
+render () {
 
   return (
     <div>
-      <form
+      <FormData
         title= "Sign Up"
         model= {[
-          {key: "nameFirst", lable: "First Name", type: "text", props: {required: true}},
-          {key: "nameLast", lable: "Last Name", type: "text", props: {required: true}},
-          {key: "userName", lable: "UserName", type: "text", props: {required: true}},
+          {key: "nameFirst", label: "First Name", type: "text", props: {required: true}},
+          {key: "nameLast", label: "Last Name", type: "text", props: {required: true}},
+          {key: "userName", label: "UserName", type: "text", props: {required: true}},
           {key: "age", label: "Age", type: "number"},
-          {key: "email", lable: "Email", type: "email", props: {required: true}},
-          {key: "password", lable: "Password", type: "password", props: {required: true}},
+          {key: "email", label: "Email", type: "email", props: {required: true}},
+          {key: "password", label: "Password", type: "password", props: {required: true}},
         ]}
         onSubmit = {(model) => {this.onSubmit(model)}}
       />
-<h1>{formdata}</h1>
+      <pre>
+        {JSON.stringify(this.state.data)}
+      </pre>
+
     </div>
   );
-  // }
 };
-// }
-
-export default App;
+}
