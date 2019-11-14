@@ -1,12 +1,23 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+
 import './formdata.css';
 
 export default class FormData extends React.Component {
     
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            data: [
+            {
+            id: "1",
+            nameFirst: "Kayden", 
+            nameLast: "Clark", 
+            userName: "KaydenClark725", 
+            age: 19, 
+            email: "kaydenclark725@gmail.com", 
+            password: "passWord123"},
+            ]
+          }
     }
 
     onSubmit = (event) => {
@@ -21,23 +32,23 @@ export default class FormData extends React.Component {
     }
 
     renderForm = () => {
-        let model = this.props.model
-        let formUI = model.map((model) => {
-            let key = model.key
-            let type = model.type
-            let props = model.props || {};
+        let fields = this.props.model
+        let formUI = fields.map((m) => {
+            let key = m.key
+            let type = m.type
+            let props = m.props || {};
 
             return (
                 <div key = {key}>
                     <label
-                    key = {"l" + model.key}
-                    htmlFor = {model.key}>
-                        {model.label}
+                    key = {"l" + m.key}
+                    htmlFor = {m.key}>
+                        {m.label}
                     </label>
                     <input {...props}
-                        ref = {(key) => {this[model.key]=key}}
+                        ref = {(key) => {this[m.key]=key}}
                         type = {type}
-                        key = {"i" + model.key}
+                        key = {"i" + m.key}
                         onChange = {(event) => {this.onChange(event, key)}}
                     />
                 </div>
