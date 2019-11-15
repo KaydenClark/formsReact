@@ -7,10 +7,8 @@ import {
     Link
   } from "react-router-dom";
 
-export default function  NavBar () {
-    
-    onSubmit = (model) => {
-        model.id = +new Date()
+export default function NavBar () {
+  
 
     return (
         <Router>
@@ -67,8 +65,8 @@ export default function  NavBar () {
           {key: "email", label: "Email", type: "email", props: {required: true}},
           {key: "password", label: "Password", type: "password", props: {required: true}},
         ]}
-        onSubmit = {(model) => {this.onSubmit(model)}}
-      />
+        onSubmit = {(model) => {this.onSubmit(model)}} />
+       
         )
-      
     }
+  
